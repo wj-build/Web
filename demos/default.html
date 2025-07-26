@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>王金 | Blogo</title>
-    <link rel="stylesheet" href="./demos/style.css">
-    <link rel="stylesheet" href="./dist/QPlayer.css">
-    <script src="./dist/QPlayer.min.js"></script>
-    <script src="./demos/script.js"></script>
+    <title>QPlayer</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../QPlayer.css">
+    <script src="../dist/QPlayer.js"></script>
+    <script src="./script.js"></script>
 </head>
 <body>
 
-<script>
+<script id="js-code">
 window.QPlayer.list = [
     {
         "name": "且听风吟",
@@ -93,40 +93,13 @@ window.QPlayer.list = [
         "lrc": "https://cdn.jsdelivr.net/gh/moeshin/QPlayer-res/Blessing 世界版.lrc"
     }
 ];
-document.addEventListener('DOMContentLoaded', function() {
-    const h1 = document.getElementById('typewriter');
-    const text = "Welcome WangJin Blogo!";
-    let index = 0;
-    let fontSize = 5; // 初始字体大小 rem
-
-    // 打字机效果
-    function type() {
-        h1.textContent = text.slice(0, index);
-        index++;
-        if (index > text.length) {
-            setTimeout(() => {
-                index = 0;
-                type();
-            }, 1200);
-        } else {
-            setTimeout(type, 180);
-        }
-    }
-    type();
-
-    // 滚轮缩放字体
-    window.addEventListener('wheel', function(e) {
-        if (e.deltaY > 0) {
-            fontSize = Math.max(2, fontSize - 0.2); // 下滑变小，最小2rem
-        } else {
-            fontSize = Math.min(8, fontSize + 0.2); // 上滑变大，最大8rem
-        }
-        h1.style.fontSize = fontSize + 'rem';
-    });
-});
 </script>
-<h1 id="typewriter"></h1>
-<p>持续更新中...</p>
+
+<label>
+    JS Code: <br>
+    <textarea id="js"></textarea>
+</label>
+<p class="right"><button onclick="execute()">Execute</button></p>
 
 </body>
 </html>

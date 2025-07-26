@@ -1,0 +1,37 @@
+{
+  "name": "qplayer2",
+  "version": "2.1.2",
+  "description": "A simple and compact HTML5 bottom hover music player.",
+  "scripts": {
+    "js": "browserify QPlayer.js -g brfs -g envify -g unassertify -p common-shakeify -o dist/QPlayer.js",
+    "js-min": "browserify QPlayer.js -g brfs  -p tinyify | uglifyjs -c -m -o dist/QPlayer.min.js",
+    "css": "cp QPlayer.css dist",
+    "css-min": "uglifycss QPlayer.css --output dist/QPlayer.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moeshin/QPlayer2.git"
+  },
+  "author": "MoeShin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moeshin/QPlayer2/issues"
+  },
+  "homepage": "https://github.com/moeshin/QPlayer2#readme",
+  "dependencies": {
+    "blueimp-md5": "^2.18.0",
+    "jquery": "^3.6.0",
+    "jquery.simplemarquee": "^0.3.0",
+    "js-cookie": "^3.0.1"
+  },
+  "devDependencies": {
+    "brfs": "^2.0.2",
+    "browserify": "^17.0.0",
+    "common-shakeify": "^0.6.2",
+    "envify": "^4.1.0",
+    "tinyify": "^3.0.0",
+    "uglify-js": "^3.14.2",
+    "uglifycss": "^0.0.29",
+    "unassertify": "^2.1.1"
+  }
+}

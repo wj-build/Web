@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>QPlayer by MOTE</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../QPlayer.css">
+    <script src="../dist/QPlayer.js"></script>
+    <script src="../provider/meto.js"></script>
+    <script src="./script.js"></script>
+    <script>
+        $(function () {
+            $('.js:eq(0)').val($('#js-code').text());
+        });
+        window.execute = function (index) {
+            if (index === undefined) {
+                index = 0;
+            }
+            eval($('.js:eq(' + index + ')').val());
+        }
+    </script>
+</head>
+<body>
+
+<script id="js-code">
+QPlayer.defaultProvider = 'meto';
+QPlayer.list = [{
+    id: 28949746,
+    name: '且听风吟',
+    artist: '群星'
+}, {
+    id: 494992638,
+    name: '白色',
+    artist: '灰澈'
+}, {
+    id: 760979,
+    name: '渚 Warm Piano Arrange',
+    artist: 'Key Sounds Label'
+}, {
+    id: 22706975,
+    name: '小さなてのひら',
+    artist: '水月陵'
+}, {
+    id: 1333199831,
+    name: 'Nightglow',
+    artist: '蔡健雅'
+}, {
+    id: 28287132,
+    name: 'やわらかな光',
+    artist: 'やまだ豊'
+}, {
+    id: 28547662,
+    name: 'Saya\'s Song',
+    artist: 'Lia'
+}, {
+    id: 471987,
+    name: '一番の宝物 (Original Version)',
+    artist: 'karuta'
+}, {
+    id: 26830207,
+    name: '僕が死のうと思ったのは',
+    artist: '中島美嘉'
+}, {
+    id: 1321297488,
+    name: '跟太阳系说再见',
+    artist: '祝乾亮'
+}, {
+    id: 470638027,
+    name: 'I Love Study 我爱学习（Off Vocal）',
+    artist: '秋风MusiX'
+}, {
+    id: 31234244,
+    name: 'Blessing 世界版',
+    artist: ['茶理理', 'V.A.']
+}];
+</script>
+
+<label>
+    JS Code: <br>
+    <textarea class="js"></textarea>
+</label>
+<p class="right"><button onclick="execute()">Execute</button></p>
+
+<label>
+    JS Code: <br>
+    <textarea class="js">
+QPlayer.provider.meto.playlist(function (list) {
+    QPlayer.list = list;
+}, '3136952023');
+</textarea>
+</label>
+<p class="right"><button onclick="execute(1)">Execute</button></p>
+
+</body>
+</html>

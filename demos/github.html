@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>QPlayer by Github</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../QPlayer.css">
+    <script src="../dist/QPlayer.js"></script>
+    <script src="./script.js"></script>
+</head>
+<body>
+
+<script id="js-code">
+$.extend(true, window.QPlayer, {
+    defaultProvider: 'github',
+    provider: {
+        github: {
+            load: function (current, callbacks) {
+                var prefix = 'https://cdn.jsdelivr.net/gh/moeshin/QPlayer-res/' + current.name;
+                if (!current.cover && current.hasCover !== false) {
+                    callbacks.success('cover', prefix + '.jpg', true);
+                }
+                if (current.hasLyrics && !current.lyrics) {
+                    $.ajax({
+                        url: prefix + '.lrc',
+                        success: function (lrc) {
+                            callbacks.success('lyrics', lrc);
+                        }
+                    });
+                }
+                if (!current.audio) {
+                    callbacks.success('audio', prefix + '.mp3', true);
+                }
+            },
+            audio: true,
+            cover: true,
+            lyrics: true
+        }
+    }
+});
+window.QPlayer.list = [{
+    name: '且听风吟',
+    artist: 'V.A.',
+    hasCover: false
+}, {
+    name: '白色',
+    artist: '灰澈'
+}, {
+    name: '渚 Warm Piano Arrange',
+    artist: 'Key Sounds Label'
+}, {
+    name: '小さなてのひら',
+    artist: '水月陵'
+}, {
+    name: 'Nightglow',
+    artist: '蔡健雅',
+    hasLyrics: true
+}, {
+    name: 'やわらかな光',
+    artist: 'やまだ豊'
+}, {
+    name: 'Saya\'s Song',
+    artist: 'Lia',
+    hasLyrics: true
+}, {
+    name: '一番の宝物 (Original Version)',
+    artist: 'karuta',
+    hasLyrics: true
+}, {
+    name: '僕が死のうと思ったのは',
+    artist: '中島美嘉',
+    hasLyrics: true
+}, {
+    name: '跟太阳系说再见',
+    artist: '祝乾亮'
+}, {
+    name: 'I Love Study 我爱学习（Off Vocal）',
+    artist: '秋风MusiX'
+}, {
+    name: 'Blessing 世界版',
+    artist: ['茶理理', 'V.A.'],
+    hasLyrics: true
+}];
+</script>
+
+<label>
+    JS Code: <br>
+    <textarea id="js"></textarea>
+</label>
+<p class="right"><button onclick="execute()">Execute</button></p>
+
+</body>
+</html>
